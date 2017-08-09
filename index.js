@@ -19,8 +19,23 @@ function displaySearchResults() {
 	// Will render the search results from dataJSON
 	// Will call renderResult() or renderErrorMessage()
 
-	renderResult();
-	renderErrorMessage();
+	console.log(dataJSON);
+	let resultsList = dataJSON.Similar.Results; // the array with Results
+
+	let message; // Will contain book results, or error message
+
+	// If no valid results were found (array length is zero),
+	// call renderResult() once with an error or invalid message.
+	// Otherwise map() over list array with renderResult()
+	// to display all the books
+	if (resultsList.length !== 0) {
+		message = resultsList.map((elem) => {return renderResult(elem);});
+	} else {
+		message = renderErrorMessage();
+	}
+
+	//renderResult();
+	$('.js-results').html(message);
 }
 
 function getDataFromAPI(searchTerm, callback) {
