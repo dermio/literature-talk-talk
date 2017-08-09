@@ -37,7 +37,18 @@ function watchBookSubmit() {
 	// and the form is submitted,
 	// call getDataFromAPI() that handles the AJAX request to server
 
-	getDataFromAPI();
+	$('.submitBookSearch').on('submit', function (event) {
+		event.preventDefault();
+		//console.log('Submit button clicked');
+
+		let queryTarget = $(this).find('#searchBook'); // input field
+		let queryBook = queryTarget.val(); // get the book value entered
+		//console.log(queryBook);
+
+		queryTarget.val(''); // empty the input field of text
+		
+		getDataFromAPI(queryBook, displaySearchResults);
+	});
 }
 
 // render Home Screen
