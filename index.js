@@ -14,7 +14,7 @@ function renderResult() {
 
 }
 
-function displaySearchResults() {
+function displaySearchResults(dataJSON) {
 	console.log('displaySearchResults() called')
 	// Will render the search results from dataJSON
 	// Will call renderResult() or renderErrorMessage()
