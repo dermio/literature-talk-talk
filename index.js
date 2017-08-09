@@ -6,12 +6,16 @@ const ENDPOINT_URL = 'https://tastedive.com/api/similar';
 function renderErrorMessage() {
 	console.log('renderErrorMessage() called');
 	// render error or invalid message
+
+	return `<p>Sorry there are no results for this book.</p>
+					<p>Would you like to try again?<p>`;
 }
 
-function renderResult() {
+function renderResult(result) {
 	console.log('renderResult() called');
 	// render each book item(s)
 
+	return `<p>${result.Name}</p>`;
 }
 
 function displaySearchResults(dataJSON) {
