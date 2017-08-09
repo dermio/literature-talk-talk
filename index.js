@@ -28,7 +28,27 @@ function getDataFromAPI(searchTerm, callback) {
 	// will get JSON data back from server
 	// hand off the success or failure to displaySearchResults()
 
-	displaySearchResults();
+	console.log(searchTerm);
+	
+	let parameter = {
+		k: API_KEY,
+		q: searchTerm,
+		type: 'books',
+		limit: 10
+	};
+
+	// Need to use JSONP to get around Cross-origin resource sharing
+	// So use the 'jsonp' and 'dataType' properties
+	$.ajax({
+	  //type: 'GET',
+	  url: 'https://tastedive.com/api/similar',
+
+	  jsonp: 'callback',  // get around CORS
+	  dataType: 'jsonp',  // get around CORS
+	  data: parameter, // defined above
+
+	  success: callback // callback is displaySearchResults()
+	});
 }
 
 function watchBookSubmit() {
