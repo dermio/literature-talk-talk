@@ -24,7 +24,21 @@ function displaySearchResults(jsonTasteDive, jsonYouTube) {
 
 
 function showData(param) {
-	console.log(MY_DATA);
+	// param is the object with tastedive and youtube keys
+	// console.log(param);
+
+	let resultsTDList = param.tastedive.Similar.Results; // array
+	// console.log(resultsTDList);
+
+	// If valid results are found, Similar.Results length
+	// is NOT zero. Map over the the list array in
+	// Similar.Results.
+	// Otherwise render an error message
+	if (resultsTDList.length !== 0) {
+		console.log('Got results!');
+	} else {
+		console.log('Error no results');
+	}
 }
 
 // The functions below grab the data from their respective API calls
