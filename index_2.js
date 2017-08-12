@@ -30,6 +30,8 @@ function displaySearchResults(param) {
 	let resultsTDList = param.tastedive.Similar.Results; // array
 	// console.log(resultsTDList);
 
+	let message; // Will contain book results, or error message
+
 	// If valid results are found, Similar.Results length
 	// is NOT zero. Map over the the list array in
 	// Similar.Results.
@@ -37,8 +39,12 @@ function displaySearchResults(param) {
 	if (resultsTDList.length !== 0) {
 		console.log('Got results!');
 	} else {
-		console.log('Error no results');
+		// console.log('Error no results');
+		message = renderErrorMessage();
 	}
+
+	// renderResult();
+	$('.js-results').html(message);
 }
 
 // The functions below grab the data from their respective API calls
