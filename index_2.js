@@ -23,7 +23,7 @@ function displaySearchResults(jsonTasteDive, jsonYouTube) {
 */
 
 
-function showData(param) {
+function displaySearchResults(param) {
 	// param is the object with tastedive and youtube keys
 	// console.log(param);
 
@@ -87,7 +87,7 @@ function getDataFromAPI(searchTerm) {
 		})
 
 	).then(function () {
-		showData(MY_DATA);
+		displaySearchResults(MY_DATA);
 	});
   
   //console.log(dataFromYouTube);
