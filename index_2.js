@@ -22,6 +22,12 @@ function displaySearchResults(jsonTasteDive, jsonYouTube) {
 }
 */
 
+function renderErrorMessage() {
+	// render error or invalid message
+
+	return `<p>Sorry there are no results for this book.</p>
+					<p>Would you like to try again?<p>`;
+}
 
 function displaySearchResults(param) {
 	// param is the object with tastedive and youtube keys
