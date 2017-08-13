@@ -29,11 +29,12 @@ function renderErrorMessage() {
 					<p>Would you like to try again?<p>`;
 }
 
-function displaySearchResults(param) {
-	// param is the object with tastedive and youtube keys
-	// console.log(param);
+function displaySearchResults(stateData) {
+	// stateData is the object with tastedive and youtube keys
+	// console.log(stateData);
 
-	let resultsTDList = param.tastedive.Similar.Results; // array
+	let infoTDList = stateData.tastedive.Similar.Info; // single array
+	let resultsTDList = stateData.tastedive.Similar.Results; // array
 	// console.log(resultsTDList);
 
 	let message; // Will contain book results, or error message
@@ -43,7 +44,9 @@ function displaySearchResults(param) {
 	// Similar.Results.
 	// Otherwise render an error message
 	if (resultsTDList.length !== 0) {
-		console.log('Got results!');
+		// console.log('Got results!');
+		// call renderResult() w/ stateData as argument
+		message = infoTDList.map(elem => renderResult(elem));
 	} else {
 		// console.log('Error no results');
 		message = renderErrorMessage();
@@ -77,7 +80,8 @@ function getDataFromAPI(searchTerm) {
 
 	// Two .ajax() queries passed to when().
 	// After data is sent back form both .ajax() queries
-	// the callback function in then() will call showData(MY_DATA)
+	// the callback function in then() will call
+	// displaySearchResults(MY_DATA)
   $.when(
 	  // $.getJSON() call for YouTube API
 	  $.getJSON(ENDPOINT_YOUTUBE, dataYouTubeAPI, function (data) {
