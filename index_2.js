@@ -22,6 +22,60 @@ function displaySearchResults(jsonTasteDive, jsonYouTube) {
 }
 */
 
+function renderResult(result, i) {
+	// console.log('renderResult() called');
+	// console.log(result);
+
+	let myThumbNail = MY_DATA.youtube.items[i].snippet.thumbnails.default.url;
+	let videoId = MY_DATA.youtube.items[i].id.videoId;
+
+	console.log(MY_DATA.youtube.items[i].snippet);
+
+		return `<div class='js-single-result'>
+						<h4>${result.Name}</h4>
+
+						<a href='${YOUTUBE_WATCH_VID}${videoId}' target='_blank'>
+							<img src='${myThumbNail}' alt=''>
+						</a>
+
+						<p>${result.Type}</p>
+						<p>${result.wTeaser}</p>
+						<p><a href='${result.wUrl}' target='_blank'>
+							Wikipedia
+						</a></p>
+
+					</div>`;
+	
+	/*
+	if (boolean) {
+	return `<div class='js-single-result'>
+						<h4>${result.Name}</h4>
+
+						<a href='${YOUTUBE_WATCH_VID}${videoId}' target='_blank'>
+							<img src='${myThumbNail}' alt=''>
+						</a>
+
+						<p>${result.Type}</p>
+						<p>${result.wTeaser}</p>
+						<p><a href='${result.wUrl}' target='_blank'>
+							Wikipedia
+						</a></p>
+
+					</div>`;
+	} else {
+	return `<div class='js-single-result'>
+						<h4>${result.Name}</h4>
+
+						<p>${result.Type}</p>
+						<p>${result.wTeaser}</p>
+						<p><a href='${result.wUrl}' target='_blank'>
+							Wikipedia
+						</a></p>
+					</div>`;
+	}
+	*/
+}
+
 function renderErrorMessage() {
 	// render error or invalid message
 
@@ -29,12 +83,15 @@ function renderErrorMessage() {
 					<p>Would you like to try again?<p>`;
 }
 
-function displaySearchResults(param) {
-	// param is the object with tastedive and youtube keys
-	// console.log(param);
+function displaySearchResults(stateData) {
+	// stateData is the object with tastedive and youtube keys
+	// console.log(stateData);
 
-	let resultsTDList = param.tastedive.Similar.Results; // array
+	let infoTDList = stateData.tastedive.Similar.Info; // single array
+	let resultsTDList = stateData.tastedive.Similar.Results; // array
 	// console.log(resultsTDList);
+
+	console.log(stateData.youtube);
 
 	let message; // Will contain book results, or error message
 
@@ -43,7 +100,13 @@ function displaySearchResults(param) {
 	// Similar.Results.
 	// Otherwise render an error message
 	if (resultsTDList.length !== 0) {
-		console.log('Got results!');
+		// console.log('Got results!');
+		// call renderResult() w/ stateData as argument
+		message = infoTDList.map((elem,i) => renderResult(elem,i)).join('');
+		message += `<div class='js-single-result'>
+									<h4>Similar topics...</h4>
+								</div>`;
+		message += resultsTDList.map((elem,i) => renderResult(elem,i)).join('');
 	} else {
 		// console.log('Error no results');
 		message = renderErrorMessage();
@@ -70,14 +133,15 @@ function getDataFromAPI(searchTerm) {
 		k: API_KEY_TASTEDIVE,
 		q: searchTerm,
 		//type: 'books',
-		limit: 10,
+		limit: 5,
 
 		info: 1 // extra, verbose=1
 	};
 
 	// Two .ajax() queries passed to when().
 	// After data is sent back form both .ajax() queries
-	// the callback function in then() will call showData(MY_DATA)
+	// the callback function in then() will call
+	// displaySearchResults(MY_DATA)
   $.when(
 	  // $.getJSON() call for YouTube API
 	  $.getJSON(ENDPOINT_YOUTUBE, dataYouTubeAPI, function (data) {
