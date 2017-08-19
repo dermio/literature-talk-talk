@@ -7,127 +7,154 @@ const API_KEY_YOUTUBE = 'AIzaSyDf9VtvE5wTSJyzYAfmWV6GJd_vzSa3r2w';
 const ENDPOINT_YOUTUBE = 'https://www.googleapis.com/youtube/v3/search';
 const YOUTUBE_WATCH_VID = 'https://www.youtube.com/watch?v=';
 
-
 const MY_DATA = {
 	tastedive: null,
-	youtube: null
+	youtube: []
 };
 
-/*
-function displaySearchResults(jsonTasteDive, jsonYouTube) {
-  return `<>from TasteDive API<>
-          <>from TasteDive API<>
-          <>from YOUTUBE API<>
-          <>from TasteDive API<>`
-}
-*/
 
-function renderResult(result, i) {
-	// console.log('renderResult() called');
-	// console.log(result);
 
-	let myThumbNail = MY_DATA.youtube.items[i].snippet.thumbnails.default.url;
-	let videoId = MY_DATA.youtube.items[i].id.videoId;
+function displaySearchResults() {
+	console.log(MY_DATA);
 
-	console.log(MY_DATA.youtube.items[i].snippet);
+	// Create empty string. Will populate the string with HTML markup
+	// with the data from MY_DATA.tastedive and MY_DATA.youtube
+	let htmlString = '';
 
-		return `<div class='js-single-result'>
-						<h4>${result.Name}</h4>
+	// MY_DATA.tastedive contains two arrays.
+	// Create tempArr for the TasteDive arrays to make looping easier
+	// by concatenating the Info and Results arrays.
+	let tempInfoArr = MY_DATA.tastedive.Similar.Info;
+	let tempResultsArr = MY_DATA.tastedive.Similar.Results;
+	let tempArrTD = tempInfoArr.concat(tempResultsArr);
 
-						<a href='${YOUTUBE_WATCH_VID}${videoId}' target='_blank'>
-							<img src='${myThumbNail}' alt=''>
-						</a>
+	// Variables will contain data from the YouTube API.
+	let ytVideoId;
+	let ytThumbNail;
+	let ytImgAlt;
 
-						<p>${result.Type}</p>
-						<p>${result.wTeaser}</p>
-						<p><a href='${result.wUrl}' target='_blank'>
-							Wikipedia
-						</a></p>
+	console.log(tempArrTD);
 
-					</div>`;
-	
-	/*
-	if (boolean) {
-	return `<div class='js-single-result'>
-						<h4>${result.Name}</h4>
+	for (var i = 0; i < tempArrTD.length; i++) {
+		// ytVideoId and ytThumbNail will be assigned to the appropriate
+		// values from MY_DATA.youtube JSON data.
+		// The values will be used for the YouTube video link, thumbnail, and alt.
 
-						<a href='${YOUTUBE_WATCH_VID}${videoId}' target='_blank'>
-							<img src='${myThumbNail}' alt=''>
-						</a>
+		ytVideoId = MY_DATA.youtube[i].items[0].id.videoId;
+		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.default.url;
+		ytImgAlt = MY_DATA.youtube[i].items[0].snippet.title;
 
-						<p>${result.Type}</p>
-						<p>${result.wTeaser}</p>
-						<p><a href='${result.wUrl}' target='_blank'>
-							Wikipedia
-						</a></p>
+		htmlString +=
+			`<div class='js-single-result'>
+				<h4>${tempArrTD[i].Name}</h4>
 
-					</div>`;
-	} else {
-	return `<div class='js-single-result'>
-						<h4>${result.Name}</h4>
+				<a href='${YOUTUBE_WATCH_VID}${ytVideoId}' target='_blank'>
+					<img src='${ytThumbNail}' alt='${ytImgAlt}'>
+				</a>
 
-						<p>${result.Type}</p>
-						<p>${result.wTeaser}</p>
-						<p><a href='${result.wUrl}' target='_blank'>
-							Wikipedia
-						</a></p>
-					</div>`;
+				<p>${tempArrTD[i].Type}</p>
+				<p>${tempArrTD[i].wTeaser}</p>
+				<p>
+					<a href='${tempArrTD[i].wUrl}' target='_blank'>Wiki page</a>
+				</p>
+			 </div>`;
 	}
+
+	$('.js-results').html(htmlString);
+}
+
+function createArrNamesFromTasteDive() {
+	// Create empty array.
+	let myArr = [];
+
+	// Loop through MY_DATA.tastedive.Similar.Info array
+	// and MY_DATA.tastedive.Similar.Results array.
+	// Push the Name key from each element into myArr
+	let infoArr = MY_DATA.tastedive.Similar.Info;
+	let resultsArr = MY_DATA.tastedive.Similar.Results;
+
+	infoArr.forEach(elem => {myArr.push(elem.Name);} );
+	resultsArr.forEach(elem => {myArr.push(elem.Name);} );
+
+	console.log(myArr);
+
+	return myArr;
+}
+
+function getDataYouTubeAPI() {
+	// check if any results were returned for the query in the Results array
+	// for the TasteDive API (check the length of the Results array)
+	let arrResultsTD = MY_DATA.tastedive.Similar.Results;
+	console.log(arrResultsTD);
+
+	if (arrResultsTD.length === 0) {
+		console.log('no results found');
+		$('.js-results').html(
+			 `<div class='js-single-result'>
+					<p>There are no results for this query.</p>
+					<p>Please try again.</p>
+				</div>`
+		);
+
+		// Do NOT perform getJSON() for YouTube API.
+		// return to exit this function.
+		return undefined;
+	}
+
+	// Call createArrNamesFromTasteDiveAPI() to create an array of Names
+	// from the TasteDive API call
+	let arrNames = createArrNamesFromTasteDive();
+
+	// Empty the array in MY_DATA.youtube in case
+	// there are previous results
+	MY_DATA.youtube = [];
+
+	// For each element in arrNames, keep track of the promise
+	// for the getJSON call. Below, will use Promise.all()
+	// on arrName which will then call displaySearchResults()
+	var promises = []; // keep track of all promises
+
+	arrNames.forEach(function (elem, index) {
+		// arrNames contains an array of string Names from the TasteDive API.
+		// each elem string Name will serve as the query search term
+		// for the getJSON to the YouTube API
+
+		let dataYouTubeAPI = {
+			part: 'snippet', // part: 'snippet' required by YouTube data API
+			key: API_KEY_YOUTUBE,
+			q: elem, // the element, it's a string name
+
+			// get 1 result for each element
+			maxResults: 1
+		};
+
+
+		// use getJSON for each element
+		var req = $.getJSON(ENDPOINT_YOUTUBE, dataYouTubeAPI, function (data) {
+			MY_DATA.youtube.push(data);
+		});
+
+		promises.push(req);
+
+	});
+
+	// console.log(MY_DATA.youtube);
+
+	// When all the promises in the promises array are fulfilled,
+	// call displaySearchResults().
+	Promise.all(promises).then(function () {
+		displaySearchResults();
+	});
+
+	/* Alternative code to Promise.all()
+	$.when.apply(undefined, promises).then(function () {
+		displaySearchResults();
+	});
 	*/
+
 }
 
-function renderErrorMessage() {
-	// render error or invalid message
-
-	return `<p>Sorry there are no results for this book.</p>
-					<p>Would you like to try again?<p>`;
-}
-
-function displaySearchResults(stateData) {
-	// stateData is the object with tastedive and youtube keys
-	// console.log(stateData);
-
-	let infoTDList = stateData.tastedive.Similar.Info; // single array
-	let resultsTDList = stateData.tastedive.Similar.Results; // array
-	// console.log(resultsTDList);
-
-	console.log(stateData.youtube);
-
-	let message; // Will contain book results, or error message
-
-	// If valid results are found, Similar.Results length
-	// is NOT zero. Map over the the list array in
-	// Similar.Results.
-	// Otherwise render an error message
-	if (resultsTDList.length !== 0) {
-		// console.log('Got results!');
-		// call renderResult() w/ stateData as argument
-		message = infoTDList.map((elem,i) => renderResult(elem,i)).join('');
-		message += `<div class='js-single-result'>
-									<h4>Similar topics...</h4>
-								</div>`;
-		message += resultsTDList.map((elem,i) => renderResult(elem,i)).join('');
-	} else {
-		// console.log('Error no results');
-		message = renderErrorMessage();
-	}
-
-	// renderResult();
-	$('.js-results').html(message);
-}
-
-// The functions below grab the data from their respective API calls
-// and store it in an object MY_DATA
-
-function getDataFromAPI(searchTerm) {
-  // data sent with $.getJSON() to YouTube
-  let dataYouTubeAPI = {
-		part: 'snippet', // part: 'snippet' required by YouTube data API
-		key: API_KEY_YOUTUBE,
-		q: searchTerm,
-		maxResults: 5
-	};
-	
+function getDataTasteDiveAPI(searchTerm) {
 	// data sent with $.ajax() to TasteDive
 	let dataTasteDiveAPI = {
 		k: API_KEY_TASTEDIVE,
@@ -138,35 +165,26 @@ function getDataFromAPI(searchTerm) {
 		info: 1 // extra, verbose=1
 	};
 
-	// Two .ajax() queries passed to when().
-	// After data is sent back form both .ajax() queries
-	// the callback function in then() will call
-	// displaySearchResults(MY_DATA)
-  $.when(
-	  // $.getJSON() call for YouTube API
-	  $.getJSON(ENDPOINT_YOUTUBE, dataYouTubeAPI, function (data) {
-		  MY_DATA.youtube = data;
-		}),
-		
-		// $.ajax() call for TasteDive API
+	// .ajax() call for TasteDive API
+	$.when(
 	  $.ajax({
 		  type: 'GET',
 		  url: ENDPOINT_TASTEDIVE,
 
-		  jsonp: 'callback',  // get around CORS
-		  dataType: 'jsonp',  // get around CORS
-		  data: dataTasteDiveAPI, // defined above
+		  jsonp: 'callback', // get around CORS
+		  dataType: 'jsonp', // get around CORS
+		  data: dataTasteDiveAPI, // variable defined above
 
 		  success: function (data) {
+		  	// store returned JSON data in object MY_DATA.tastedive
 		   	MY_DATA.tastedive = data;
 		  }
 		})
-
 	).then(function () {
-		displaySearchResults(MY_DATA);
+		// wait to get JSON data from TasteDive API before
+		// calling getDataYouTubeAPI
+	 	getDataYouTubeAPI();
 	});
-  
-  //console.log(dataFromYouTube);
 }
 
 function watchSubmit() {
@@ -174,14 +192,11 @@ function watchSubmit() {
     event.preventDefault();
     
 		let queryTarget = $(this).find('#searchBook'); // input field
-		let queryBook = queryTarget.val(); // get the book value entered
-		//console.log(queryBook);
+		let queryTerm = queryTarget.val(); // get the search term
 		
-		queryTarget.val('');
-    
-    console.log(queryBook);
+		queryTarget.val(''); // empty search field
 
-    getDataFromAPI(queryBook); // function call
+    getDataTasteDiveAPI(queryTerm); // function call
   });
 }
 
