@@ -16,9 +16,6 @@ body {
 	color: #fff;
 	max-width: 700px;
 	border: 1px solid black;
-}
-
-.searchArea, .result-area {
 	margin-bottom: 20px;
 }
 
