@@ -1,20 +1,30 @@
 body {
-	border: 1px solid black;
+	margin: 0;
+	padding: 0;
+	height: 100%;
 
-	max-width: 800px;
-	border: 1px solid black;
-	margin: 50px auto 0 auto;
+	/*
+	background-image: url('https://images.unsplash.com/photo-1463320726281-696a485928c7?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;*/
 
-	
-	background-color: #ddd;
+
+
 }
 
 .searchArea, .result-area {
-	margin: 20px auto;
-	width: 80%;
-
+	color: #black;
+	max-width: 700px;
 	border: 1px solid black;
-	background-color: #fff;
+}
+
+.searchArea, .result-area {
+	margin-bottom: 20px;
+}
+
+.searchArea {
+	margin-top: 50px;
 }
 
 .submitBookSearch {
