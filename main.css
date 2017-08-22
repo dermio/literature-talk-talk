@@ -1,20 +1,19 @@
+html, body {
+	height: 100%;
+}
+
 body {
 	margin: 0;
 	padding: 0;
-	height: 100%;
 
-	/*
 	background-image: url('https://images.unsplash.com/photo-1463320726281-696a485928c7?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;*/
-
-
-
+  /*background-repeat: no-repeat;*/
+  background-size: cover;
 }
 
 .searchArea, .result-area {
-	color: #black;
+	color: #fff;
 	max-width: 700px;
 	border: 1px solid black;
 }
