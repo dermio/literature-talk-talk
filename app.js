@@ -182,7 +182,7 @@ function getDataTasteDiveAPI(searchTerm) {
 		   	MY_DATA.tastedive = data;
 		  }
 		})
-	).done(function () {
+	).then(function () {
 		// wait to get JSON data from TasteDive API before
 		// calling getDataYouTubeAPI
 	 	getDataYouTubeAPI();
