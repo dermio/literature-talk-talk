@@ -34,6 +34,7 @@ function displaySearchResults() {
 	let ytImgAlt;
 
 	console.log(tempArrTD);
+	console.log(MY_DATA);
 
 	for (var i = 0; i < tempArrTD.length; i++) {
 		// ytVideoId and ytThumbNail will be assigned to the appropriate
@@ -41,7 +42,7 @@ function displaySearchResults() {
 		// The values will be used for the YouTube video link, thumbnail, and alt.
 
 		ytVideoId = MY_DATA.youtube[i].items[0].id.videoId;
-		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.default.url;
+		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.medium.url;
 		ytImgAlt = MY_DATA.youtube[i].items[0].snippet.title;
 
 		htmlString +=
@@ -122,7 +123,7 @@ function getDataYouTubeAPI() {
 		let dataYouTubeAPI = {
 			part: 'snippet', // part: 'snippet' required by YouTube data API
 			key: API_KEY_YOUTUBE,
-			q: elem, // the element, it's a string name
+			q: elem + ' discussion book author', // the element, it's a string name
 
 			// get 1 result for each element
 			maxResults: 1
@@ -159,7 +160,8 @@ function getDataTasteDiveAPI(searchTerm) {
 	let dataTasteDiveAPI = {
 		k: API_KEY_TASTEDIVE,
 		q: searchTerm,
-		//type: 'books',
+		// q: searchterm, ???
+		type: 'books',
 		limit: 5,
 
 		info: 1 // extra, verbose=1
@@ -180,7 +182,7 @@ function getDataTasteDiveAPI(searchTerm) {
 		   	MY_DATA.tastedive = data;
 		  }
 		})
-	).then(function () {
+	).done(function () {
 		// wait to get JSON data from TasteDive API before
 		// calling getDataYouTubeAPI
 	 	getDataYouTubeAPI();
