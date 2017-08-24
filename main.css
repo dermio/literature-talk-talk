@@ -9,7 +9,6 @@ html, body {
 body {
 	margin: 0;
 	padding: 0;
-
 	
 	background-image: url("https://images.unsplash.com/photo-1463320726281-696a485928c7?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");*/
   background-position: center;
@@ -34,30 +33,6 @@ body {
 	margin-top: 50px;
 }
 
-#searchBook {
-	padding: 10px;
-	font-size: 14px;
-
-	display: inline-block;
-	width: 500px;
-}
-
-.submitBookSearch {
-	border: 1px solid black;
-	height: 100px;
-}
-
-.submitBtn {
-  display: inline-block;
-  margin: 0 10px 0 0;
-  padding: 15px 45px;
-  font-size: 14px;
-  line-height: 1.8;
-  appearance: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
 h2 {
 	display: flex;
 	justify-content: center;
@@ -69,6 +44,53 @@ h2 {
 
 .book-desc {
 	text-align: center;
+}
+
+/* Form styling */
+
+.submitBookSearch {
+	border: 1px solid black;
+	height: 50px;
+
+	margin-bottom: 15px;
+
+	display: flex;
+	align-items: center;
+}
+
+#searchBook, .submitBtn {
+	height: 100%;
+	border: none;
+}
+
+#searchBook {
+	padding: 10px;
+	font-size: 14px;
+
+	display: inline-block;
+	width: 500px;
+}
+
+.submitBtn {
+	/*
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 15px 45px;
+  font-size: 14px;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;*/
+
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px 20px;
+
+  background-color: #00a0ee;
+}
+
+.submitBtn:hover {
+	background-color: #0090cc;
 }
 
 a {
