@@ -1,11 +1,11 @@
 // ThinkDive API and endpoint info
-const API_KEY_TASTEDIVE = '280012-Booksand-1ZFHAWKT';
-const ENDPOINT_TASTEDIVE = 'https://tastedive.com/api/similar';
+const API_KEY_TASTEDIVE = "280012-Booksand-1ZFHAWKT";
+const ENDPOINT_TASTEDIVE = "https://tastedive.com/api/similar";
 
 // YouTube API and endpoint info
-const API_KEY_YOUTUBE = 'AIzaSyDf9VtvE5wTSJyzYAfmWV6GJd_vzSa3r2w';
-const ENDPOINT_YOUTUBE = 'https://www.googleapis.com/youtube/v3/search';
-const YOUTUBE_WATCH_VID = 'https://www.youtube.com/watch?v=';
+const API_KEY_YOUTUBE = "AIzaSyDf9VtvE5wTSJyzYAfmWV6GJd_vzSa3r2w";
+const ENDPOINT_YOUTUBE = "https://www.googleapis.com/youtube/v3/search";
+const YOUTUBE_WATCH_VID = "https://www.youtube.com/watch?v=";
 
 const MY_DATA = {
 	tastedive: null,
@@ -17,7 +17,7 @@ const MY_DATA = {
 function displaySearchResults() {
 	// Create empty string. Will populate the string with HTML markup
 	// with the data from MY_DATA.tastedive and MY_DATA.youtube
-	let htmlString = '';
+	let htmlString = "";
 
 	// MY_DATA.tastedive contains two arrays.
 	// Create tempArr for the TasteDive arrays to make looping easier
@@ -41,22 +41,22 @@ function displaySearchResults() {
 		ytImgAlt = MY_DATA.youtube[i].items[0].snippet.title;
 
 		htmlString +=
-			`<div class='js-single-result'>
+			`<div class="js-single-result">
 				<h4>${tempArrTD[i].Name}</h4>
 
-				<a href='${YOUTUBE_WATCH_VID}${ytVideoId}' target='_blank'>
-					<img src='${ytThumbNail}' alt='${ytImgAlt}'>
+				<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank">
+					<img src="${ytThumbNail}" alt="${ytImgAlt}">
 				</a>
 
 				<p>${tempArrTD[i].Type}</p>
 				<p>${tempArrTD[i].wTeaser}</p>
 				<p>
-					<a href='${tempArrTD[i].wUrl}' target='_blank'>Wiki page</a>
+					<a href="${tempArrTD[i].wUrl}" target="_blank">Wiki page</a>
 				</p>
 			 </div>`;
 	}
 
-	$('.js-results').html(htmlString);
+	$(".js-results").html(htmlString);
 }
 
 function createArrNamesFromTasteDive() {
@@ -81,8 +81,8 @@ function getDataYouTubeAPI() {
 	let arrResultsTD = MY_DATA.tastedive.Similar.Results;
 
 	if (arrResultsTD.length === 0) {
-		$('.js-results').html(
-			 `<div class='js-single-result'>
+		$(".js-results").html(
+			 `<div class="js-single-result">
 					<p>There are no results for this query.</p>
 					<p>Please try again.</p>
 				</div>`
@@ -112,9 +112,9 @@ function getDataYouTubeAPI() {
 		// for the getJSON to the YouTube API
 
 		let dataYouTubeAPI = {
-			part: 'snippet', // part: 'snippet' required by YouTube data API
+			part: "snippet", // part: "snippet" required by YouTube data API
 			key: API_KEY_YOUTUBE,
-			q: elem + ' discussion book author', // the element, it's a string name
+			q: elem + " discussion book author", // the element, it"s a string name
 
 			// get 1 result for each element
 			maxResults: 1
@@ -144,7 +144,7 @@ function getDataTasteDiveAPI(searchTerm) {
 		k: API_KEY_TASTEDIVE,
 		q: searchTerm,
 		// q: searchterm, ???
-		type: 'books',
+		type: "books",
 		limit: 5,
 
 		info: 1 // extra, verbose=1
@@ -153,11 +153,11 @@ function getDataTasteDiveAPI(searchTerm) {
 	// .ajax() call for TasteDive API
 	$.when(
 	  $.ajax({
-		  type: 'GET',
+		  type: "GET",
 		  url: ENDPOINT_TASTEDIVE,
 
-		  jsonp: 'callback', // get around CORS
-		  dataType: 'jsonp', // get around CORS
+		  jsonp: "callback", // get around CORS
+		  dataType: "jsonp", // get around CORS
 		  data: dataTasteDiveAPI, // variable defined above
 
 		  success: function (data) {
@@ -173,13 +173,13 @@ function getDataTasteDiveAPI(searchTerm) {
 }
 
 function watchSubmit() {
-  $('.submitBookSearch').on('submit', function (event) {
+  $(".submitBookSearch").on("submit", function (event) {
     event.preventDefault();
     
-		let queryTarget = $(this).find('#searchBook'); // input field
+		let queryTarget = $(this).find("#searchBook"); // input field
 		let queryTerm = queryTarget.val(); // get the search term
 		
-		queryTarget.val(''); // empty search field
+		queryTarget.val(""); // empty search field
 
     getDataTasteDiveAPI(queryTerm); // function call
   });
