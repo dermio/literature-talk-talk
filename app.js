@@ -15,8 +15,6 @@ const MY_DATA = {
 
 
 function displaySearchResults() {
-	console.log(MY_DATA);
-
 	// Create empty string. Will populate the string with HTML markup
 	// with the data from MY_DATA.tastedive and MY_DATA.youtube
 	let htmlString = '';
@@ -32,9 +30,6 @@ function displaySearchResults() {
 	let ytVideoId;
 	let ytThumbNail;
 	let ytImgAlt;
-
-	console.log(tempArrTD);
-	console.log(MY_DATA);
 
 	for (var i = 0; i < tempArrTD.length; i++) {
 		// ytVideoId and ytThumbNail will be assigned to the appropriate
@@ -77,8 +72,6 @@ function createArrNamesFromTasteDive() {
 	infoArr.forEach(elem => {myArr.push(elem.Name);} );
 	resultsArr.forEach(elem => {myArr.push(elem.Name);} );
 
-	console.log(myArr);
-
 	return myArr;
 }
 
@@ -86,10 +79,8 @@ function getDataYouTubeAPI() {
 	// check if any results were returned for the query in the Results array
 	// for the TasteDive API (check the length of the Results array)
 	let arrResultsTD = MY_DATA.tastedive.Similar.Results;
-	console.log(arrResultsTD);
 
 	if (arrResultsTD.length === 0) {
-		console.log('no results found');
 		$('.js-results').html(
 			 `<div class='js-single-result'>
 					<p>There are no results for this query.</p>
@@ -139,19 +130,11 @@ function getDataYouTubeAPI() {
 
 	});
 
-	// console.log(MY_DATA.youtube);
-
 	// When all the promises in the promises array are fulfilled,
 	// call displaySearchResults().
 	Promise.all(promises).then(function () {
 		displaySearchResults();
 	});
-
-	/* Alternative code to Promise.all()
-	$.when.apply(undefined, promises).then(function () {
-		displaySearchResults();
-	});
-	*/
 
 }
 
