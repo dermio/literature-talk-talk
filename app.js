@@ -31,7 +31,7 @@ function displaySearchResults() {
 	let ytThumbNail;
 	let ytImgAlt;
 
-	for (var i = 0; i < tempArrTD.length; i++) {
+	for (let i = 0; i < tempArrTD.length; i++) {
 		// ytVideoId and ytThumbNail will be assigned to the appropriate
 		// values from MY_DATA.youtube JSON data.
 		// The values will be used for the YouTube video link, thumbnail, and alt.
@@ -104,7 +104,7 @@ function getDataYouTubeAPI() {
 	// For each element in arrNames, keep track of the promise
 	// for the getJSON call. Below, will use Promise.all()
 	// on arrName which will then call displaySearchResults()
-	var promises = []; // keep track of all promises
+	let promises = []; // keep track of all promises
 
 	arrNames.forEach(function (elem, index) {
 		// arrNames contains an array of string Names from the TasteDive API.
@@ -122,7 +122,7 @@ function getDataYouTubeAPI() {
 
 
 		// use getJSON for each element
-		var req = $.getJSON(ENDPOINT_YOUTUBE, dataYouTubeAPI, function (data) {
+		let req = $.getJSON(ENDPOINT_YOUTUBE, dataYouTubeAPI, function (data) {
 			MY_DATA.youtube.push(data);
 		});
 
