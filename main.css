@@ -21,11 +21,9 @@ body {
 	/*color: black;*/
 	color: #fff;
 	max-width: 700px;
-	border: 1px solid black;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 
 	background: rgba(0, 0, 0, 0.7);
-
 	font-family: 'Questrial', sans-serif;
 	line-height: 1.5;
 }
@@ -37,22 +35,38 @@ body {
 #searchBook {
 	padding: 10px;
 	font-size: 14px;
+
+	display: inline-block;
+	width: 500px;
 }
 
 .submitBookSearch {
 	border: 1px solid black;
+	height: 100px;
 }
 
 .submitBtn {
-	/* style later */
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 15px 45px;
+  font-size: 14px;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 h2 {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 10px;
 
 	font-size: 50px;
 	font-family: 'Old Standard TT', serif;
+}
+
+.book-desc {
+	text-align: center;
 }
 
 a {
