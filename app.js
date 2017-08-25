@@ -50,8 +50,8 @@ function displaySearchResults() {
 
 				<p class="media-content">Media: ${tempArrTD[i].Type}</p>
 				<p>${tempArrTD[i].wTeaser}</p>
-				<p>
-					<a class="wiki" href="${tempArrTD[i].wUrl}" target="_blank">Wiki page</a>
+				<p class="wiki-para">
+					<a class="wiki-link" href="${tempArrTD[i].wUrl}" target="_blank">Wiki page</a>
 				</p>
 			 </div>`;
 	}
