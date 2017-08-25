@@ -42,16 +42,16 @@ function displaySearchResults() {
 
 		htmlString +=
 			`<div class="js-single-result">
-				<h4>${tempArrTD[i].Name}</h4>
+				<h4 class="title-name">${tempArrTD[i].Name}</h4>
 
 				<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank">
-					<img src="${ytThumbNail}" alt="${ytImgAlt}">
+					<img src="${ytThumbNail}" alt="${ytImgAlt}" class="img-vid">
 				</a>
 
-				<p>${tempArrTD[i].Type}</p>
+				<p class="media-content">Media: ${tempArrTD[i].Type}</p>
 				<p>${tempArrTD[i].wTeaser}</p>
 				<p>
-					<a href="${tempArrTD[i].wUrl}" target="_blank">Wiki page</a>
+					<a class="wiki" href="${tempArrTD[i].wUrl}" target="_blank">Wiki page</a>
 				</p>
 			 </div>`;
 	}
