@@ -95,15 +95,6 @@ body {
 	background-color: #0080cc;
 }
 
-.wiki {
-	color: lightblue;
-	text-decoration: none;
-}
-
-.wiki:hover {
-	color: red;
-}
-
 /***** style inside .result-area *****/
 
 .result-area {
@@ -114,7 +105,7 @@ body {
 	background: rgba(0, 0, 0, 0.7);
 	border-radius: 5px;
 	margin-bottom: 15px;
-	padding: 10px;
+	padding: 10px 15px;
 
 	/* need negative margins to adjust the width */
 	margin-left: -10px;
@@ -124,13 +115,27 @@ body {
 .title-name {
 	text-align: center;
 	font-size: 25px;
-	margin-top: 0px;
+	margin-top: 5px;
+	margin-bottom: 25px;
 }
 
 .img-vid {
 	float: left;
 	margin-right: 15px;
 	margin-bottom: 4px;
+}
+
+.wiki-para {
+	margin-bottom: 10px;
+}
+
+.wiki-link {
+	color: lightblue;
+	text-decoration: none;
+}
+
+.wiki-link:hover {
+	color: red;
 }
 
 /*****************/
