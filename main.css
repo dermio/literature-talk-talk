@@ -50,13 +50,11 @@ body {
 /***** style <form> *****/
 
 .submitBookSearch {
-	border: 1px solid black;
 	height: 50px;
-
 	margin-bottom: 15px;
 
 	display: flex;
-	align-items: center;
+	justify-content: center;
 }
 
 #searchBook, .submitBtn {
@@ -70,7 +68,7 @@ body {
 
 	display: inline-block;
 	width: 500px;
-
+	background-color: white;
 }
 
 .submitBtn {
