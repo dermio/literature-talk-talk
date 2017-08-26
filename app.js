@@ -14,6 +14,15 @@ const MY_DATA = {
 
 
 
+function toggleText() {
+	$(".js-results").on("click", ".teaserText", function () {
+		//console.log("clicked teaser text, toggle");
+
+		$(this).children(".remainingText, .showLess, .showMore")
+					 .toggleClass("hideText");
+	});
+}
+
 function displaySearchResults() {
 	// Create empty string. Will populate the string with HTML markup
 	// with the data from MY_DATA.tastedive and MY_DATA.youtube
@@ -31,6 +40,10 @@ function displaySearchResults() {
 	let ytThumbNail;
 	let ytImgAlt;
 
+	// Variables will contain data from TasteDive API wTeaser string.
+	let headerText;
+	let remainingText;
+
 	for (let i = 0; i < tempArrTD.length; i++) {
 		// ytVideoId and ytThumbNail will be assigned to the appropriate
 		// values from MY_DATA.youtube JSON data.
@@ -40,16 +53,29 @@ function displaySearchResults() {
 		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.medium.url;
 		ytImgAlt = MY_DATA.youtube[i].items[0].snippet.title;
 
+		headerText = tempArrTD[i].wTeaser.slice(0, 300);
+		remainingText = tempArrTD[i].wTeaser.slice(300);
+
+		//if (headerText.length < 300) { don't create second <span> }
+
 		htmlString +=
 			`<div class="js-single-result">
 				<h4 class="title-name">${tempArrTD[i].Name}</h4>
 
+			<div class="img-container">
 				<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank">
 					<img src="${ytThumbNail}" alt="${ytImgAlt}" class="img-vid">
 				</a>
-
+				<div class="overlay"></div>
+			</div>
+				
 				<p class="media-content">Media: ${tempArrTD[i].Type}</p>
-				<p>${tempArrTD[i].wTeaser}</p>
+				<p class="teaserText">
+					<span class="headerText">${headerText}</span>
+					<span class="showMore">click for more...</span>
+					<span class="remainingText hideText">${remainingText}</span>
+					<span class="showLess hideText">click to hide...</span>
+				</p>
 				<p class="wiki-para">
 					<a class="wiki-link" href="${tempArrTD[i].wUrl}" target="_blank">Wiki page</a>
 				</p>
@@ -57,6 +83,7 @@ function displaySearchResults() {
 	}
 
 	$(".js-results").html(htmlString);
+	toggleText(); // watch clicking on text, to show/hide more text
 }
 
 function createArrNamesFromTasteDive() {
