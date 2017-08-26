@@ -16,8 +16,6 @@ const MY_DATA = {
 
 function toggleText() {
 	$(".js-results").on("click", ".teaserText", function () {
-		//console.log("clicked teaser text, toggle");
-
 		$(this).children(".remainingText, .showLess, .showMore")
 					 .toggleClass("hideText");
 	});
