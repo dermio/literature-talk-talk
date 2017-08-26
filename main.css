@@ -182,4 +182,14 @@ input:-webkit-autofill {
 	background: rgba(0, 0, 0, 0.6);
 }
 
+/* footer */
+footer {
+	color: white;
+	font-family: "Questrial", sans-serif;
+	font-size: 14px;
+
+	margin-bottom: 15px;
+	text-align: center;
+}
+
 /*****************/
