@@ -45,6 +45,7 @@ body {
 
 .book-desc {
 	text-align: center;
+	font-size: 25px;
 }
 
 /***** style <form> *****/
@@ -70,6 +71,8 @@ body {
 	display: inline-block;
 	width: 500px;
 	background-color: white;
+
+	-webkit-background-color: white !important;
 }
 
 .submitBtn {
@@ -83,6 +86,11 @@ body {
 
 .submitBtn:hover {
 	background-color: #0080cc;
+}
+
+/* fix Chrome's yellow background */
+input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0px 9999px white;
 }
 
 /***** style inside .result-area *****/
@@ -107,12 +115,37 @@ body {
 	font-size: 25px;
 	margin-top: 5px;
 	margin-bottom: 25px;
+	font-family: "Old Standard TT", serif;
+}
+
+.img-container {
+	position: relative;
+}
+
+.img-container:hover, .img-vid {
+	background: rgba(0, 0, 0, 0.5);;
 }
 
 .img-vid {
 	float: left;
 	margin-right: 15px;
 	margin-bottom: 4px;
+}
+
+/* remove space between spans */
+
+
+.remainingText {
+	color: red;
+}
+
+.showMore, .showLess {
+	color: lightblue;
+	cursor: pointer;
+}
+
+.hideText {
+	display: none;
 }
 
 .wiki-para {
@@ -126,6 +159,27 @@ body {
 
 .wiki-link:hover {
 	color: red;
+}
+
+
+
+.img-container {
+	position: relative;
+}
+
+.img-container .after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	color: #fff;
+}
+
+.img-container:hover .after {
+	display: block;
+	background: rgba(0, 0, 0, 0.6);
 }
 
 /*****************/
