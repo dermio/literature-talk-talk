@@ -76,6 +76,7 @@ function displaySearchResults() {
 						<span class="media-word">Media: </span>${tempArrTD[i].Type}
 					</p>
 					<p class="wiki-para">
+						<i class="fa fa-wikipedia-w" aria-hidden="true"></i>
 						<a class="wiki-link" href="${tempArrTD[i].wUrl}" target="_blank">Wikipedia page</a>
 					</p>
 				</div>
@@ -137,7 +138,7 @@ function getDataYouTubeAPI() {
 
 	// For each element in arrNames, keep track of the promise
 	// for the getJSON call. Below, will use Promise.all()
-	// on arrName which will then call displaySearchResults()
+	// on arrNames which will then call displaySearchResults()
 	let promises = []; // keep track of all promises
 
 	arrNames.forEach(function (elem, index) {
