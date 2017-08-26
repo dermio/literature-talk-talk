@@ -72,7 +72,7 @@ body {
 	width: 500px;
 	background-color: white;
 
-	-webkit-background-color: white !important;
+	/*-webkit-background-color: white !important;*/
 }
 
 .submitBtn {
@@ -88,7 +88,7 @@ body {
 	background-color: #0080cc;
 }
 
-/* fix Chrome's yellow background */
+/* fix Chrome's yellow background for text input */
 input:-webkit-autofill {
     -webkit-box-shadow: inset 0 0 0px 9999px white;
 }
@@ -102,10 +102,14 @@ input:-webkit-autofill {
 .js-single-result {
 	background: rgba(0, 0, 0, 0.7);
 	border-radius: 5px;
+
+	/* With the background rgba alpha, margin-bottom creates 
+	a "card" for each .js-single-result */
 	margin-bottom: 15px;
 	padding: 10px 15px;
 
-	/* need negative margins to adjust the width */
+	/* need negative margins to properly adjust the width
+	of each .js-single-result card */
 	margin-left: -10px;
 	margin-right: -10px;
 }
@@ -118,53 +122,18 @@ input:-webkit-autofill {
 	font-family: "Old Standard TT", serif;
 }
 
+
+
+/***** style video thumbnail, image overlay *****/
+
 .img-container {
 	position: relative;
-}
-
-.img-container:hover, .img-vid {
-	background: rgba(0, 0, 0, 0.5);;
 }
 
 .img-vid {
 	float: left;
 	margin-right: 15px;
 	margin-bottom: 4px;
-}
-
-/* remove space between spans */
-
-
-.remainingText {
-	color: red;
-}
-
-.showMore, .showLess {
-	color: lightblue;
-	cursor: pointer;
-}
-
-.hideText {
-	display: none;
-}
-
-.wiki-para {
-	margin-bottom: 10px;
-}
-
-.wiki-link {
-	color: lightblue;
-	text-decoration: none;
-}
-
-.wiki-link:hover {
-	color: red;
-}
-
-
-
-.img-container {
-	position: relative;
 }
 
 .img-container .after {
@@ -180,6 +149,48 @@ input:-webkit-autofill {
 .img-container:hover .after {
 	display: block;
 	background: rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* remove space between spans, font-size: 0 ??? */
+
+
+/* media and wikipedia styling */
+
+.media-wiki-container {
+	display: flex;
+	justify-content: space-around;
+}
+
+.media-word {
+	font-weight: bold;
+}
+
+.wiki-para {
+	margin-bottom: 10px;
+}
+
+.wiki-link {
+	color: lightblue;
+}
+
+.wiki-link:hover {
+	color: red;
+}
+
+/* teaser text */
+.remainingText {
+	color: red;
+}
+
+.showMore, .showLess {
+	color: lightblue;
+	cursor: pointer;
+}
+
+.hideText {
+	display: none;
 }
 
 /* footer */
