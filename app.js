@@ -62,22 +62,31 @@ function displaySearchResults() {
 			`<div class="js-single-result">
 				<h4 class="title-name">${tempArrTD[i].Name}</h4>
 
-			<div class="img-container">
-				<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank">
-					<img src="${ytThumbNail}" alt="${ytImgAlt}" class="img-vid">
-				</a>
-				<div class="overlay"></div>
-			</div>
+
+
+				<div class="img-container">
+					<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank">
+						<img src="${ytThumbNail}" alt="${ytImgAlt}" class="img-vid">
+					</a>
+					<div class="overlay"></div>
+				</div>
 				
-				<p class="media-content">Media: ${tempArrTD[i].Type}</p>
+
+
+				<div class="media-wiki-container">
+					<p class="media-content">
+						<span class="media-word">Media: </span>${tempArrTD[i].Type}
+					</p>
+					<p class="wiki-para">
+						<a class="wiki-link" href="${tempArrTD[i].wUrl}" target="_blank">Wikipedia page</a>
+					</p>
+				</div>
+
 				<p class="teaserText">
 					<span class="headerText">${headerText}</span>
 					<span class="showMore">click for more...</span>
 					<span class="remainingText hideText">${remainingText}</span>
 					<span class="showLess hideText">click to hide...</span>
-				</p>
-				<p class="wiki-para">
-					<a class="wiki-link" href="${tempArrTD[i].wUrl}" target="_blank">Wiki page</a>
 				</p>
 			 </div>`;
 	}
