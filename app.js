@@ -53,8 +53,8 @@ function displaySearchResults() {
 		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.medium.url;
 		ytImgAlt = MY_DATA.youtube[i].items[0].snippet.title;
 
-		headerText = tempArrTD[i].wTeaser.slice(0, 300);
-		remainingText = tempArrTD[i].wTeaser.slice(300);
+		headerText = tempArrTD[i].wTeaser.slice(0, 350);
+		remainingText = tempArrTD[i].wTeaser.slice(350);
 
 		//if (headerText.length < 300) { don't create second <span> }
 
