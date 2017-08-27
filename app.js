@@ -15,8 +15,9 @@ const MY_DATA = {
 
 
 function toggleText() {
-	$(".js-results").on("click", ".teaserText", function () {
-		$(this).children(".remainingText, .showLess, .showMore")
+	$(".js-results").on("click", ".showMore, .showLess", function () {
+		$(this).parent(".teaserText")
+					 .children(".showMore, .remainingText, .showLess")
 					 .toggleClass("hideText");
 	});
 }
