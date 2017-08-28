@@ -177,7 +177,7 @@ input:-webkit-autofill {
 
 /* teaser text */
 .remainingText {
-	color: red;
+	color: #fff;
 }
 
 .showMore, .showLess {
