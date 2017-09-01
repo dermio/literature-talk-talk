@@ -1,6 +1,6 @@
 # Literature Talk Talk
 
-Literature Talk Talk is an app for that provides information related to books.
+Literature Talk Talk is an app for that provides information related to book lovers.
 
 ### Summary
 
