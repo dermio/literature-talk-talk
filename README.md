@@ -1,6 +1,6 @@
 # Literature Talk Talk
 
-[Literature Talk Talk](https://dermio.github.io/book-search-CS/) is an app for that provides book information for people who love to read.
+[Literature Talk Talk](https://dermio.github.io/book-search-CS/) is a responsive app for that provides book information for people who love to read.
 
 ### Summary
 
