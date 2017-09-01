@@ -127,28 +127,34 @@ input:-webkit-autofill {
 /***** style video thumbnail, image overlay *****/
 
 .img-container {
-	position: relative;
+  position: relative;
+  display: inline-block;
+
+  float: left;
+  margin-right: 10px;
 }
 
-.img-vid {
-	float: left;
-	margin-right: 15px;
-	margin-bottom: 4px;
+.img-container .overlay {
+  position: absolute;
+  pointer-events: none;
+  
+  width: 100%;
+  height: 100%;
+  /*height: 200px;
+  width: 300px;*/
+
+  top: 0;
+  left: 0;
+
+  /*background: rgba(0, 0, 0, 0.5);*/
 }
 
-.img-container .after {
-	position: absolute;
-	top: 0;
-	left: 0;
-	display: none;
-	width: 100%;
-	height: 100%;
-	color: #fff;
+.img-container:hover .overlay {
+  background: rgba(0, 0, 0, 0.3);
 }
 
-.img-container:hover .after {
-	display: block;
-	background: rgba(0, 0, 0, 0.6);
+.fa-youtube-play {
+  color: #ff0000;
 }
 
 
