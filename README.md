@@ -1,10 +1,10 @@
 # Literature Talk Talk
 
-Literature Talk Talk is an app for book lovers. It provides information about books as well as related information.
+Literature Talk Talk is an app for that provides information related to books.
 
 ### Summary
 
-[Literature Talk Talk](https://dermio.github.io/book-search-CS/) ...Short description ...
+Bookworms often want extra information about the novels they read. [Literature Talk Talk](https://dermio.github.io/book-search-CS/) provides this content, as well as recommendations that may interest the reader.
 
 ### Technology
 
