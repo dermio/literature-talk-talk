@@ -15,7 +15,7 @@ Literature Talk Talk is an app for book lovers. It provides information about bo
 
 ### Icon Attribution
 
-* Book favicon by [Martz90](http://www.iconarchive.com/artist/martz90.html)
+* Book favicon by Martz90 on [Icon Archive](http://www.iconarchive.com/artist/martz90.html)
 * YouTube icon from [Font Awesome](http://fontawesome.io/)
 
 
