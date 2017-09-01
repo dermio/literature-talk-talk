@@ -26,7 +26,6 @@ function displaySearchResults() {
 	// Create empty string. Will populate the string with HTML markup
 	// with the data from MY_DATA.tastedive and MY_DATA.youtube
 	let htmlString = "";
-	console.log(MY_DATA.youtube);
 
 	// MY_DATA.tastedive contains two arrays.
 	// Create tempArr for the TasteDive arrays to make looping easier
@@ -142,8 +141,6 @@ function getDataYouTubeAPI() {
 	// Empty the array in MY_DATA.youtube in case
 	// there are previous results
 	MY_DATA.youtube = [];
-	console.log(MY_DATA);
-	console.log(arrNames);
 
 	// For each element in arrNames, keep track of the promise
 	// for the getJSON call. Below, will use Promise.all()
