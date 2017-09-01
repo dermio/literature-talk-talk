@@ -26,6 +26,7 @@ function displaySearchResults() {
 	// Create empty string. Will populate the string with HTML markup
 	// with the data from MY_DATA.tastedive and MY_DATA.youtube
 	let htmlString = "";
+	console.log(MY_DATA.youtube);
 
 	// MY_DATA.tastedive contains two arrays.
 	// Create tempArr for the TasteDive arrays to make looping easier
@@ -38,6 +39,7 @@ function displaySearchResults() {
 	let ytVideoId;
 	let ytThumbNail;
 	let ytImgAlt;
+	let ytTitle;
 
 	// Variables will contain data from TasteDive API wTeaser string.
 	let headerText;
@@ -51,6 +53,8 @@ function displaySearchResults() {
 		ytVideoId = MY_DATA.youtube[i].items[0].id.videoId;
 		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.medium.url;
 		ytImgAlt = MY_DATA.youtube[i].items[0].snippet.title;
+		ytTitle = MY_DATA.youtube[i].items[0].snippet.title;
+		//ytTitle, place under .img-container
 
 		headerText = tempArrTD[i].wTeaser.slice(0, 350);
 		remainingText = tempArrTD[i].wTeaser.slice(350);
@@ -64,12 +68,14 @@ function displaySearchResults() {
 
 
 				<div class="img-container">
-					<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank">
+					<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank" class="vid">
 						<img src="${ytThumbNail}" alt="${ytImgAlt}" class="img-vid">
 					</a>
-					<div class="overlay"></div>
+					<div class="overlay">
+						<i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+					</div>
 				</div>
-				
+
 
 
 				<div class="media-wiki-container">
@@ -136,6 +142,8 @@ function getDataYouTubeAPI() {
 	// Empty the array in MY_DATA.youtube in case
 	// there are previous results
 	MY_DATA.youtube = [];
+	console.log(MY_DATA);
+	console.log(arrNames);
 
 	// For each element in arrNames, keep track of the promise
 	// for the getJSON call. Below, will use Promise.all()
@@ -150,10 +158,11 @@ function getDataYouTubeAPI() {
 		let dataYouTubeAPI = {
 			part: "snippet", // part: "snippet" required by YouTube data API
 			key: API_KEY_YOUTUBE,
-			q: elem + " discussion book author", // the element, it"s a string name
+			q: elem + "book", // the element, it is a string name
 
 			// get 1 result for each element
-			maxResults: 1
+			maxResults: 1,
+			//order: "relevance" // new
 		};
 
 
