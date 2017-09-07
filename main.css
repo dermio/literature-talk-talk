@@ -10,15 +10,29 @@ body {
 	margin: 0;
 	padding: 0;
 	
-	background-image: url("https://images.unsplash.com/photo-1463320726281-696a485928c7?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");*/
+	background-image: url("https://images.unsplash.com/photo-1463320726281-696a485928c7?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
 }
 
-.searchArea, .result-area {
+.searchArea {
 	color: #fff;
 	max-width: 700px;
+	margin: 50px auto 15px;
+	padding-bottom: 5px;
+
+	border-radius: 5px;
+
+	font-family: "Questrial", sans-serif;
+	line-height: 1.5;
+
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.result-area {
+	color: #fff;
+	/* max-width handled by float-grid.css, row class */
 	margin-bottom: 10px;
 
 	border-radius: 5px;
@@ -29,15 +43,11 @@ body {
 
 /***** style inside .searchArea *****/
 
-.searchArea {
-	margin-top: 50px;
-	background: rgba(0, 0, 0, 0.7);
-}
-
 .app-title {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 10px;
+	padding-top: 25px;
 
 	font-size: 50px;
 	font-family: "Old Standard TT", serif;
@@ -71,8 +81,6 @@ body {
 	display: inline-block;
 	width: 500px;
 	background-color: white;
-
-	/*-webkit-background-color: white !important;*/
 }
 
 .submitBtn {
@@ -93,11 +101,7 @@ input:-webkit-autofill {
     -webkit-box-shadow: inset 0 0 0px 9999px white;
 }
 
-/***** style inside .result-area *****/
-
-.result-area {
-	
-}
+/***** style inside .result-area container *****/
 
 .js-single-result {
 	background: rgba(0, 0, 0, 0.7);
@@ -106,12 +110,7 @@ input:-webkit-autofill {
 	/* With the background rgba alpha, margin-bottom creates 
 	a "card" for each .js-single-result */
 	margin-bottom: 15px;
-	padding: 10px 15px;
-
-	/* need negative margins to properly adjust the width
-	of each .js-single-result card */
-	margin-left: -10px;
-	margin-right: -10px;
+	padding: 10px 20px;
 }
 
 .title-name {
@@ -127,11 +126,8 @@ input:-webkit-autofill {
 /***** style video thumbnail, image overlay *****/
 
 .img-container {
-  position: relative;
+	position: relative;
   display: inline-block;
-
-  float: left;
-  margin-right: 10px;
 }
 
 .img-container .overlay {
@@ -140,8 +136,6 @@ input:-webkit-autofill {
   
   width: 100%;
   height: 100%;
-  /*height: 200px;
-  width: 300px;*/
 
   top: 0;
   left: 0;
@@ -157,6 +151,9 @@ input:-webkit-autofill {
   color: #ff0000;
 }
 
+.img-vid {
+	width: 100%;
+}
 
 
 /* remove space between spans, font-size: 0 ??? */
