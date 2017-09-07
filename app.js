@@ -58,15 +58,10 @@ function displaySearchResults() {
 		headerText = tempArrTD[i].wTeaser.slice(0, 350);
 		remainingText = tempArrTD[i].wTeaser.slice(350);
 
-		console.log(MY_DATA);
-		//if (headerText.length < 300) { don't create second <span> }
-
 		htmlString +=
 		 `<div class="col-6">
 				<div class="js-single-result">
 					<h4 class="title-name">${tempArrTD[i].Name}</h4>
-
-
 
 					<div class="img-container">
 						<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank" class="vid">
@@ -76,9 +71,7 @@ function displaySearchResults() {
 							<i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
 						</div>
 					</div>
-
-
-
+					
 					<div class="media-wiki-container">
 						<p class="media-content">
 							<span class="media-word">Media: </span>${tempArrTD[i].Type}
