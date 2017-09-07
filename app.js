@@ -50,7 +50,7 @@ function displaySearchResults() {
 		// The values will be used for the YouTube video link, thumbnail, and alt.
 
 		ytVideoId = MY_DATA.youtube[i].items[0].id.videoId;
-		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.medium.url;
+		ytThumbNail = MY_DATA.youtube[i].items[0].snippet.thumbnails.high.url;
 		ytImgAlt = MY_DATA.youtube[i].items[0].snippet.title;
 		ytTitle = MY_DATA.youtube[i].items[0].snippet.title;
 		//ytTitle, place under .img-container
@@ -58,42 +58,45 @@ function displaySearchResults() {
 		headerText = tempArrTD[i].wTeaser.slice(0, 350);
 		remainingText = tempArrTD[i].wTeaser.slice(350);
 
+		console.log(MY_DATA);
 		//if (headerText.length < 300) { don't create second <span> }
 
 		htmlString +=
-			`<div class="js-single-result">
-				<h4 class="title-name">${tempArrTD[i].Name}</h4>
+		 `<div class="col-6">
+				<div class="js-single-result">
+					<h4 class="title-name">${tempArrTD[i].Name}</h4>
 
 
 
-				<div class="img-container">
-					<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank" class="vid">
-						<img src="${ytThumbNail}" alt="${ytImgAlt}" class="img-vid">
-					</a>
-					<div class="overlay">
-						<i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+					<div class="img-container">
+						<a href="${YOUTUBE_WATCH_VID}${ytVideoId}" target="_blank" class="vid">
+							<img src="${ytThumbNail}" alt="${ytImgAlt}" class="img-vid">
+						</a>
+						<div class="overlay">
+							<i class="fa fa-youtube-play fa-3x" aria-hidden="true"></i>
+						</div>
 					</div>
-				</div>
 
 
 
-				<div class="media-wiki-container">
-					<p class="media-content">
-						<span class="media-word">Media: </span>${tempArrTD[i].Type}
+					<div class="media-wiki-container">
+						<p class="media-content">
+							<span class="media-word">Media: </span>${tempArrTD[i].Type}
+						</p>
+						<p class="wiki-para">
+							<i class="fa fa-wikipedia-w" aria-hidden="true"></i>
+							<a class="wiki-link" href="${tempArrTD[i].wUrl}" target="_blank">Wikipedia page</a>
+						</p>
+					</div>
+
+					<p class="teaserText">
+						<span class="headerText">${headerText}</span>
+						<span class="showMore">click for more...</span>
+						<span class="remainingText hideText">${remainingText}</span>
+						<span class="showLess hideText">click to hide...</span>
 					</p>
-					<p class="wiki-para">
-						<i class="fa fa-wikipedia-w" aria-hidden="true"></i>
-						<a class="wiki-link" href="${tempArrTD[i].wUrl}" target="_blank">Wikipedia page</a>
-					</p>
 				</div>
-
-				<p class="teaserText">
-					<span class="headerText">${headerText}</span>
-					<span class="showMore">click for more...</span>
-					<span class="remainingText hideText">${remainingText}</span>
-					<span class="showLess hideText">click to hide...</span>
-				</p>
-			 </div>`;
+			</div>`;
 	}
 
 	$(".js-results").html(htmlString);
