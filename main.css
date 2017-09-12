@@ -157,12 +157,18 @@ input:-webkit-autofill {
   background: rgba(0, 0, 0, 0.3);
 }
 
-.fa-youtube-play {
-	color: #00a0ee;
-}
-
 .img-vid {
 	width: 100%;
+}
+
+.overlay {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fa-youtube-play {
+	color: #00a0ee;
 }
 
 
