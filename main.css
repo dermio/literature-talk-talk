@@ -219,3 +219,39 @@ footer {
 }
 
 /*****************/
+
+@media (min-width: 320px) {
+	/* DARKEN background photo */
+
+  .searchArea {
+  /*
+  1 text shadow for font, paragraph
+  2 paragraph in .searchArea, make font bigger
+  3 .appTitle, remove padding top
+  4. set padding-bottom: 0px;
+  */
+		padding-bottom: 0px;
+		margin-top: 0px;
+		background: none;
+  }
+
+	.app-title {
+		line-height: 60px;
+		text-shadow: 2px 2px black;
+	}
+
+  .desc {
+    text-shadow: 2px 2px black;
+  }
+}
+
+@media (min-width: 730px) {
+	.searchArea {
+		background: rgba(0, 0, 0, 0.7);
+		margin: 50px auto 15px;
+	}
+
+	.app-title {
+		margin-top: 20px;
+	}
+}
