@@ -84,6 +84,7 @@ function displaySearchResults() {
 
 					<p class="teaserText">
 						<span class="headerText">${headerText}</span>
+						<br />
 						<span class="showMore">click for more...</span>
 						<span class="remainingText hideText">${remainingText}</span>
 						<span class="showLess hideText">click to hide...</span>
