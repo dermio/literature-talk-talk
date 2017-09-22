@@ -136,7 +136,7 @@ input:-webkit-autofill {
 
 .img-container {
 	position: relative;
-  display: inline-block;
+  /* display: inline-block;*/
 }
 
 .img-container .overlay {
@@ -254,4 +254,18 @@ footer {
 	.app-title {
 		margin-top: 20px;
 	}
+}
+
+/* Ben Pardo, 21 Sep 2017 */
+@media (min-width: 811px) {
+	.col-6 {
+		/*height: 600px;*/
+		margin-bottom: 10px;
+	}
+
+	
+}
+
+@media (mid-width: 640px) {
+
 }
