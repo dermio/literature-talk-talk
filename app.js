@@ -18,6 +18,8 @@ function equalizeHeights() {
 	// Returns an array of jQuery objects targeting the element
 	// with a class of "title-name".
 	let titleArr = $(".title-name");
+	let title1;
+	let title2;
 	let titleHeight1;
 	let titleHeight2;
 	let maxHeight;
@@ -33,9 +35,17 @@ function equalizeHeights() {
 	// is a HTML element. Need to convert the HTML element into
 	// a jQuery object to use jQuery methods.
 	for (let i = 1; i < titleArr.length; i += 2) {
-		titleHeight1 = $(titleArr[i - 1]).css("height");
-		titleHeight2 = $(titleArr[i]).css("height");
-		console.log(titleHeight1, titleHeight2);
+		title1 = $(titleArr[i - 1]);
+		title2 = $(titleArr[i]);
+		titleHeight1 = parseInt(title1.css("height").match(/\d+/));
+		titleHeight2 = parseInt(title2.css("height").match(/\d+/));
+		//console.log(titleHeight1, titleHeight2);
+
+		maxHeight = Math.max(titleHeight1, titleHeight2);
+		//console.log(maxHeight);
+
+		title1.css("height", `${maxHeight}px`);
+		title2.css("height", `${maxHeight}px`);
 	}
 
 
