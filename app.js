@@ -14,6 +14,36 @@ const MY_DATA = {
 
 
 
+function equalizeHeights() {
+	// Returns an array of jQuery objects targeting the element
+	// with a class of "title-name".
+	let titleArr = $(".title-name");
+	let titleHeight1;
+	let titleHeight2;
+	let maxHeight;
+
+	console.log(titleArr);
+	/*
+	titleArr.each(function (index, element) {
+		console.log($(element).css("height")); // can use element or this keyword
+	});
+	*/
+
+	// Need to wrap titleArr[i] in $(), because titleArr[i]
+	// is a HTML element. Need to convert the HTML element into
+	// a jQuery object to use jQuery methods.
+	for (let i = 1; i < titleArr.length; i += 2) {
+		titleHeight1 = $(titleArr[i - 1]).css("height");
+		titleHeight2 = $(titleArr[i]).css("height");
+		console.log(titleHeight1, titleHeight2);
+	}
+
+
+	// Need event listener for Window resizing
+	// https://api.jquery.com/resize/
+	// i.e.: $(window).resize(callback);
+}
+
 function toggleText() {
 	$(".js-results").on("click", ".showMore, .showLess", function () {
 		$(this).parent(".teaserText")
@@ -94,6 +124,7 @@ function displaySearchResults() {
 	}
 
 	$(".js-results").html(htmlString);
+	equalizeHeights();
 	toggleText(); // watch clicking on text, to show/hide more text
 }
 
