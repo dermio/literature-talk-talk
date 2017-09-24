@@ -194,6 +194,10 @@ input:-webkit-autofill {
 }
 
 /* teaser text */
+.teaserText > span {
+	display: inline-block;
+}
+
 .remainingText {
 	color: #fff;
 }
@@ -203,7 +207,7 @@ input:-webkit-autofill {
 	cursor: pointer;
 }
 
-.hideText {
+.hideText.toggle {
 	display: none;
 }
 
