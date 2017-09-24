@@ -133,10 +133,10 @@ function displaySearchResults() {
 
 					<p class="teaserText">
 						<span class="headerText">${headerText}</span>
-						<span class="remainingText hideText">${remainingText}</span>
+						<span class="remainingText hideText toggle">${remainingText}</span>
 						<br />
-						<span class="showMore">click for more...</span>
-						<span class="showLess hideText">click to hide...</span>
+						<span class="showMore toggle">click for more...</span>
+						<span class="showLess hideText toggle">click to hide...</span>
 					</p>
 				</div>
 			</div>`;
