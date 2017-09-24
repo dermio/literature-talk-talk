@@ -14,7 +14,7 @@ const MY_DATA = {
 
 
 
-function equalizeHeights() {
+function equalizeTitleHeights() {
 	// Returns an array of jQuery objects targeting the element
 	// with a class of "title-name".
 	let titleArr = $(".title-name");
@@ -134,7 +134,7 @@ function displaySearchResults() {
 	}
 
 	$(".js-results").html(htmlString);
-	equalizeHeights();
+	equalizeTitleHeights();
 	toggleText(); // watch clicking on text, to show/hide more text
 }
 
