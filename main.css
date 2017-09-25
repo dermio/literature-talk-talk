@@ -225,15 +225,7 @@ footer {
 /*****************/
 
 @media (min-width: 320px) {
-	/* DARKEN background photo */
-
   .searchArea {
-  /*
-  1 text shadow for font, paragraph
-  2 paragraph in .searchArea, make font bigger
-  3 .appTitle, remove padding top
-  4. set padding-bottom: 0px;
-  */
 		padding-bottom: 0px;
 		margin-top: 0px;
 		background: none;
@@ -262,28 +254,21 @@ footer {
 
 
 /********** Ben Pardo, 21 Sep 2017 **********/
-
+/*
 @media (min-width: 811px) {
 	.col-6 {
-		/*height: 600px;*/
 		margin-bottom: 10px;
 	}
 
 	
 }
 
-@media (min-width: 640px) {
-/* NO set height on .col-6 or .js-single-result
-weird pixel width behavior:
-640-641
-643-675
-727-756
-799-814
-890-918
-*/
-	
+@media (min-width: 640px) {	
 	.js-single-result {
 		min-height: 680px;
 	}
-
 }
+*/
+
+/***** Modal *****/
+
