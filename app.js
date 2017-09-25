@@ -14,65 +14,40 @@ const MY_DATA = {
 
 
 
-function equalizeHeaderTextHeights() {
-	let headerTextArr = $(".headerText");
-	let headerText1;
-	let headerText2;
-	let headerTextHeight1;
-	let headerTextHeight2;
-	let maxHeight;
+function equalizeDisplayedTextHeights(selector) {
+  // The selector parameter is a string of a class name.
+  // The class targets the text height that will be equalized.
+  // The selector will be ".title-name" for the book title,
+  // or ".headerText" for the book teaser text that's always displayed.
 
-	// console.log(headerTextArr);
+  // Returns an array of jQuery objects targeting the element
+	// with the appropriate class name.
+  let domArray = $(`${selector}`);
+  let element1;
+  let element2;
+  let elementHeight1;
+  let elementHeight2;
+  let maxHeight;
+  //console.log(domArray);
 
-	for (let i = 1; i < headerTextArr.length; i += 2) {
-		headerText1 = $(headerTextArr[i - 1]);
-		headerText2 = $(headerTextArr[i]);
-		headerTextHeight1 = parseInt($(headerText1).css("height").match(/\d+/));
-		headerTextHeight2 = parseInt($(headerText2).css("height").match(/\d+/));
-
-		maxHeight = Math.max(headerTextHeight1, headerTextHeight2);
-
-		headerText1.css("height", `${maxHeight}px`);
-		headerText2.css("height", `${maxHeight}px`);
-	}
-}
-
-function equalizeTitleHeights() {
-	// Returns an array of jQuery objects targeting the element
-	// with a class of "title-name".
-	let titleArr = $(".title-name");
-	let title1;
-	let title2;
-	let titleHeight1;
-	let titleHeight2;
-	let maxHeight;
-
-	// console.log(titleArr);
-	/*
-	titleArr.each(function (index, element) {
-		console.log($(element).css("height")); // can use element or this keyword
-	});
-	*/
-
-	// Need to wrap titleArr[i] in $(), because titleArr[i]
+  // Need to wrap domArray[i] in $(), because domArray[i]
 	// is a HTML element. Need to convert the HTML element into
-	// a jQuery object to use jQuery methods.
-	for (let i = 1; i < titleArr.length; i += 2) {
-		title1 = $(titleArr[i - 1]);
-		title2 = $(titleArr[i]);
-		titleHeight1 = parseInt(title1.css("height").match(/\d+/));
-		titleHeight2 = parseInt(title2.css("height").match(/\d+/));
-		//console.log(titleHeight1, titleHeight2);
+  // a jQuery object to use jQuery methods.
+  for (let i = 1; i < domArray.length; i += 2) {
+    element1 = $(domArray[i - 1]);
+    element2 = $(domArray[i]);
+    elementHeight1 = parseInt(element1.css("height").match(/\d+/));
+    elementHeight2 = parseInt(element2.css("height").match(/\d+/));
+    //console.log(elementHeight1, elementHeight2);
 
-		maxHeight = Math.max(titleHeight1, titleHeight2);
-		//console.log(maxHeight);
+    maxHeight = Math.max(elementHeight1, elementHeight2);
+    //console.log(maxHeight);
 
-		title1.css("height", `${maxHeight}px`);
-		title2.css("height", `${maxHeight}px`);
+    element1.css("height", maxHeight);
+		element2.css("height", maxHeight);
 	}
 
-
-	// Need event listener for Window resizing
+  // Need event listener for Window resizing
 	// https://api.jquery.com/resize/
 	// i.e.: $(window).resize(callback);
 }
@@ -157,8 +132,8 @@ function displaySearchResults() {
 	}
 
 	$(".js-results").html(htmlString);
-	equalizeTitleHeights();
-	equalizeHeaderTextHeights();
+	equalizeDisplayedTextHeights(".title-name");
+	equalizeDisplayedTextHeights(".headerText");
 	toggleText(); // watch clicking on text, to show/hide more text
 }
 
