@@ -14,6 +14,10 @@ const MY_DATA = {
 
 
 
+function equalizeRemainingTextHeights() {
+
+}
+
 function equalizeDisplayedTextHeights(selector) {
   // The selector parameter is a string of a class name.
   // The class targets the text height that will be equalized.
@@ -35,7 +39,7 @@ function equalizeDisplayedTextHeights(selector) {
   // a jQuery object to use jQuery methods.
   for (let i = 1; i < domArray.length; i += 2) {
     element1 = $(domArray[i - 1]);
-    element2 = $(domArray[i]);
+		element2 = $(domArray[i]);
     elementHeight1 = parseInt(element1.css("height").match(/\d+/));
     elementHeight2 = parseInt(element2.css("height").match(/\d+/));
     //console.log(elementHeight1, elementHeight2);
@@ -57,6 +61,7 @@ function toggleText() {
 		$(this).parent(".teaserText")
 					 .children(".showMore, .remainingText, .showLess")
 					 .toggleClass("hideText");
+		//equalizeDisplayedTextHeights(".remainingText");
 	});
 }
 
