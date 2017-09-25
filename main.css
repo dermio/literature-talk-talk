@@ -222,7 +222,18 @@ footer {
 	text-shadow: 1px 1px 1px #000;
 }
 
-/*****************/
+/***** modal *****/
+
+.modal {
+	background-color: #000;
+	position: fixed;
+	height: 90%;
+	width: 90%;
+	display: ;
+
+}
+
+/***** media queries *****/
 
 @media (min-width: 320px) {
   .searchArea {
@@ -269,6 +280,3 @@ footer {
 	}
 }
 */
-
-/***** Modal *****/
-
