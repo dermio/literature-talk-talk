@@ -14,13 +14,27 @@ const MY_DATA = {
 
 
 
-function equalizeTextHeights() {
+function equalizeHeaderTextHeights() {
 	let headerTextArr = $(".headerText");
-	console.log(headerTextArr);
-	console.log(headerTextArr[0]);
+	let headerText1;
+	let headerText2;
+	let headerTextHeight1;
+	let headerTextHeight2;
+	let maxHeight;
 
-	let headerText = headerTextArr;
-	console.log(headerText);
+	// console.log(headerTextArr);
+
+	for (let i = 1; i < headerTextArr.length; i += 2) {
+		headerText1 = $(headerTextArr[i - 1]);
+		headerText2 = $(headerTextArr[i]);
+		headerTextHeight1 = parseInt($(headerText1).css("height").match(/\d+/));
+		headerTextHeight2 = parseInt($(headerText2).css("height").match(/\d+/));
+
+		maxHeight = Math.max(headerTextHeight1, headerTextHeight2);
+
+		headerText1.css("height", `${maxHeight}px`);
+		headerText2.css("height", `${maxHeight}px`);
+	}
 }
 
 function equalizeTitleHeights() {
@@ -33,7 +47,7 @@ function equalizeTitleHeights() {
 	let titleHeight2;
 	let maxHeight;
 
-	console.log(titleArr);
+	// console.log(titleArr);
 	/*
 	titleArr.each(function (index, element) {
 		console.log($(element).css("height")); // can use element or this keyword
@@ -144,7 +158,7 @@ function displaySearchResults() {
 
 	$(".js-results").html(htmlString);
 	equalizeTitleHeights();
-	equalizeTextHeights();
+	equalizeHeaderTextHeights();
 	toggleText(); // watch clicking on text, to show/hide more text
 }
 
