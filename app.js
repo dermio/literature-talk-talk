@@ -14,7 +14,7 @@ const MY_DATA = {
 
 
 
-function equalizeRemainingTextHeights() {
+function toggleModal() {
 
 }
 
@@ -133,7 +133,12 @@ function displaySearchResults() {
 						<span class="showLess hideText toggle">click to hide...</span>
 					</p>
 
-					<div modal="modal" id="modal">
+					<div class="modal" id="modal">
+						<h4 class="title-name">${tempArrTD[i].Name}</h4>
+						<p class="teaserText">
+							<span class="headerText">${headerText}</span>
+							<span class="remainingText hideText toggle">${remainingText}</span>
+						</p>
 					</div>
 
 				</div>
@@ -143,7 +148,7 @@ function displaySearchResults() {
 	$(".js-results").html(htmlString);
 	equalizeDisplayedTextHeights(".title-name");
 	equalizeDisplayedTextHeights(".headerText");
-	toggleText(); // watch clicking on text, to show/hide more text
+	//toggleText(); // watch clicking on text, to show/hide more text
 }
 
 function createArrNamesFromTasteDive() {
