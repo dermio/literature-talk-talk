@@ -232,7 +232,7 @@ footer {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	display: block;
+	display: none;
 
 }
 
@@ -266,7 +266,7 @@ footer {
 	}
 
 	.modal {
-		width: 70%;
+		max-width: 1000px;
 	}
 }
 
