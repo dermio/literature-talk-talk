@@ -232,7 +232,7 @@ footer {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	display: none;
+	display: block;
 
 }
 
@@ -264,8 +264,11 @@ footer {
 	.app-title {
 		margin-top: 20px;
 	}
-}
 
+	.modal {
+		width: 70%;
+	}
+}
 
 /********** Ben Pardo, 21 Sep 2017 **********/
 /*
