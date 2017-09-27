@@ -132,6 +132,10 @@ function displaySearchResults() {
 						<span class="showMore toggle">click for more...</span>
 						<span class="showLess hideText toggle">click to hide...</span>
 					</p>
+
+					<div modal="modal" id="modal">
+					</div>
+
 				</div>
 			</div>`;
 	}
