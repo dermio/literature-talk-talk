@@ -138,7 +138,7 @@ function displaySearchResults() {
 					</p>
 
 					<div class="modal hideModal">
-						<span class="closeModal">%times; close button, float right?</span>
+						<span class="closeModalBtn">&times;</span>
 						<h4 class="title-name-modal">${tempArrTD[i].Name}</h4>
 						<p class="teaserText-modal">
 							<span class="headerText-modal">${headerText}</span>
