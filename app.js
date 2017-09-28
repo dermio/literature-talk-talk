@@ -15,7 +15,11 @@ const MY_DATA = {
 
 
 function toggleModal() {
-
+	$(".js-results").on("click", ".showMore, .showLess-modal", function () {
+		$(this).closest(".js-single-result")
+					 .find(".modal")
+					 .toggleClass("hideModal");
+	});
 }
 
 function equalizeDisplayedTextHeights(selector) {
@@ -129,15 +133,17 @@ function displaySearchResults() {
 						<span class="headerText">${headerText}</span>
 						<span class="remainingText hideText toggle">${remainingText}</span>
 						<br />
-						<span class="showMore toggle">click for more...</span>
+						<span class="showMore openModal toggle">click for more...</span>
 						<span class="showLess hideText toggle">click to hide...</span>
 					</p>
 
-					<div class="modal" id="modal">
-						<h4 class="title-name">${tempArrTD[i].Name}</h4>
-						<p class="teaserText">
-							<span class="headerText">${headerText}</span>
-							<span class="remainingText hideText toggle">${remainingText}</span>
+					<div class="modal hideModal">
+						<h4 class="title-name-modal">${tempArrTD[i].Name}</h4>
+						<p class="teaserText-modal">
+							<span class="headerText-modal">${headerText}</span>
+							<span class="remainingText-modal">${remainingText}</span>
+							<br />
+							<span class="closeModal">click to close...</span>
 						</p>
 					</div>
 
@@ -149,6 +155,7 @@ function displaySearchResults() {
 	equalizeDisplayedTextHeights(".title-name");
 	equalizeDisplayedTextHeights(".headerText");
 	//toggleText(); // watch clicking on text, to show/hide more text
+	toggleModal();
 }
 
 function createArrNamesFromTasteDive() {
