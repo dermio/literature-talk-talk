@@ -15,7 +15,7 @@ const MY_DATA = {
 
 
 function toggleModal() {
-	$(".js-results").on("click", ".showMore, .closeModal", function () {
+	$(".js-results").on("click", ".showMore, .closeModal, .closeModalBtn", function () {
 		$(this).closest(".js-single-result")
 					 .find(".modal")
 					 .toggleClass("hideModal");
