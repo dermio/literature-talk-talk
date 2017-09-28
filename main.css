@@ -202,7 +202,7 @@ input:-webkit-autofill {
 	color: #fff;
 }
 
-.showMore, .showLess, .closeModal {
+.showMore, .showLess, .closeModal, .closeModalBtn {
 	color: lightblue;
 	cursor: pointer;
 }
@@ -240,6 +240,16 @@ footer {
 
 .hideModal {
 	display: none;
+}
+
+.closeModalBtn {
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.closeModalBtn:hover {
+	cursor:pointer;
 }
 
 /***** media queries *****/
