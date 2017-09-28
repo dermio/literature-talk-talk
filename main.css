@@ -227,6 +227,7 @@ footer {
 .modal {
 	background-color: #000;
 	position: fixed;
+	padding: 20px;
 	height: 90%;
 	width: 90%;
 	top: 50%;
@@ -260,6 +261,8 @@ footer {
   }
 }
 
+
+
 @media (min-width: 730px) {
 	.searchArea {
 		background: rgba(0, 0, 0, 0.7);
@@ -272,6 +275,7 @@ footer {
 
 	.modal {
 		max-width: 800px;
+		padding: 30px;
 	}
 }
 
