@@ -65,7 +65,6 @@ function toggleText() {
 		$(this).parent(".teaserText")
 					 .children(".showMore, .remainingText, .showLess")
 					 .toggleClass("hideText");
-		//equalizeDisplayedTextHeights(".remainingText");
 	});
 }
 
@@ -153,8 +152,11 @@ function displaySearchResults() {
 	}
 
 	$(".js-results").html(htmlString);
-	equalizeDisplayedTextHeights(".title-name");
-	equalizeDisplayedTextHeights(".headerText");
+	if ($(window).width() >= 640) {
+		equalizeDisplayedTextHeights(".title-name");
+		equalizeDisplayedTextHeights(".headerText");
+		equalizeDisplayedTextHeights(".img-vid");
+	}
 	//toggleText(); // watch clicking on text, to show/hide more text
 	toggleModal();
 }
