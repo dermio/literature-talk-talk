@@ -48,7 +48,11 @@ function equalizeDisplayedTextHeights(selector) {
     elementHeight2 = parseInt(element2.css("height").match(/\d+/));
     //console.log(elementHeight1, elementHeight2);
 
-    maxHeight = Math.max(elementHeight1, elementHeight2);
+		/* if (selector !== ".img-vid") { May not use in production */
+			maxHeight = Math.max(elementHeight1, elementHeight2);
+		/*} else {
+			maxHeight = Math.min(elementHeight1, elementHeight2);
+		}*/
     //console.log(maxHeight);
 
     element1.css("height", maxHeight);
@@ -152,11 +156,12 @@ function displaySearchResults() {
 	}
 
 	$(".js-results").html(htmlString);
-	if ($(window).width() >= 640) {
-		equalizeDisplayedTextHeights(".title-name");
-		equalizeDisplayedTextHeights(".headerText");
-		equalizeDisplayedTextHeights(".img-vid");
-	}
+	
+	/* if ($(window).width() >= 640) { // may not use width() */
+	equalizeDisplayedTextHeights(".title-name");
+	equalizeDisplayedTextHeights(".headerText");
+	// equalizeDisplayedTextHeights(".img-vid");
+	//}
 	//toggleText(); // watch clicking on text, to show/hide more text
 	toggleModal();
 }
