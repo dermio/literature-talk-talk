@@ -105,7 +105,7 @@ function displaySearchResults() {
 		ytTitle = MY_DATA.youtube[i].items[0].snippet.title;
 		//ytTitle, place under .img-container
 
-		headerText = tempArrTD[i].wTeaser.slice(0, 350);
+		headerText = tempArrTD[i].wTeaser.slice(0, 350) + "...";
 		remainingText = tempArrTD[i].wTeaser.slice(350);
 
 		htmlString +=
