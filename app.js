@@ -252,7 +252,7 @@ function getDataTasteDiveAPI(searchTerm) {
 		k: API_KEY_TASTEDIVE,
 		q: searchTerm,
 		// q: searchterm, ???
-		type: "books",
+		type: "book",
 		limit: 5,
 
 		info: 1 // extra, verbose=1
