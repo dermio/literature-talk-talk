@@ -15,10 +15,14 @@ const MY_DATA = {
 
 
 function toggleModal() {
-	$(".js-results").on("click", ".showMore, .closeModal, .closeModalBtn", function () {
-		$(this).closest(".js-single-result")
-					 .find(".modal")
-					 .toggleClass("hideModal");
+	$(".js-results")
+		/* Need to remove any previous `click` events handlers bound
+		to the elements. */
+		.off()
+		.on("click", ".showMore, .closeModal, .closeModalBtn", function () {
+			$(this).closest(".js-single-result")
+				.find(".modal")
+				.toggleClass("hideModal");
 	});
 }
 
